@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeBull – Trading Simulator & Bot Platform</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons removed -->
+    <!-- Prism CSS for code highlighting -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="navbar">
+      <div class="container nav-content">
+        <a href="#" class="logo">
+          <img src="assets/icons/bull.png" alt="CodeBull logo" class="logo-icon" />
+          <span>CodeBull</span>
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#bots">Bots</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Unleash the Power of Modern Trading</h1>
+          <p>
+            CodeBull is a next‑generation trading playground designed for both
+            human traders and algorithms. Explore markets in a fully
+            risk‑free environment, replay historical sessions on demand and
+            deploy bots that follow your rules. Whether you prefer hands‑on
+            experimentation or automated execution, CodeBull brings the
+            future of trading to your browser.
+          </p>
+          <a href="#contact" class="btn primary-btn">Join the Beta</a>
+        </div>
+        <div class="hero-chart">
+          <canvas id="heroChart"></canvas>
+        </div>
+      </div>
+      <div class="scroll-down">
+        <a href="#features" title="Scroll Down" class="scroll-link">&#x2193;</a>
+      </div>
+    </section>
+
+    <!-- About / Overview Section -->
+    <section id="overview" class="overview-section section">
+      <div class="container">
+        <h2 class="section-title">A Complete Trading Playground</h2>
+        <p class="section-subtitle">
+          Build confidence and competence by experimenting with your own trading
+          strategies in a risk‑free environment. CodeBull combines a powerful
+          simulation engine with intuitive manual trading tools, a full
+          automation stack for bots and deep analytics to help you improve.
+          Replay historical sessions to sharpen your skills and see how your
+          ideas would have performed in different market conditions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+      <div class="container">
+        <h2 class="section-title">Platform Highlights</h2>
+        <div class="features-grid">
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">📈</span></div>
+            <h3>Real‑Time Market Data</h3>
+            <p>
+              Stream live prices for stocks, forex and crypto. Replay markets on
+              any historical date range and respond to price movements in
+              milliseconds using up‑to‑the‑second data streams.
+              Real‑time feeds ensure your simulations mirror actual trading
+              conditions and keep leaderboard rankings precise.
+            </p>
+          </div>
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">🛠️</span></div>
+            <h3>Manual Simulation Tools</h3>
+            <p>
+              Prefer to trade by hand? Use our manual simulation tools to
+              analyse charts and record trades yourself—just like manual
+              backtesting. Pick a time period, set your
+              entry and exit rules and watch how your strategy unfolds. Manual
+              practice helps you understand market behaviour and refine
+              decision‑making skills.
+            </p>
+          </div>
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">🤖</span></div>
+            <h3>Automated Bot Builder</h3>
+            <p>
+              CodeBull’s automation stack lets you build custom bots without
+              limits. Design strategies using simple rules or complex code,
+              integrate with third‑party charting tools and let the bot
+              execute trades automatically. Backtest and refine your bot
+              before deploying it across multiple asset classes so it follows
+              your rules precisely.
+            </p>
+          </div>
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">🔁</span></div>
+            <h3>Backtesting & Paper Trading</h3>
+            <p>
+              Evaluate your ideas on historical data to identify strengths,
+              weaknesses and profitability. CodeBull’s simulator enables both
+              manual and automated backtesting and lets you replay tick‑level
+              data at any timeframe. Practise via paper trading to build
+              confidence before risking real capital, using features like
+              one‑minute data windows and realistic order execution.
+            </p>
+          </div>
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">🏆</span></div>
+            <h3>Leaderboards & Community</h3>
+            <p>
+              Engage with peers and climb the ranks on our real‑time
+              leaderboard. The leaderboard highlights top traders and updates
+              automatically to reflect current performance and aggregates
+              returns across accounts. A competitive atmosphere motivates you
+              to sharpen your skills and share strategies, while the community
+              provides support and inspiration.
+            </p>
+          </div>
+          <!-- Feature Item -->
+          <div class="feature-card">
+            <div class="icon-wrap"><span class="icon-emoji">📊</span></div>
+            <h3>Performance & Risk Analytics</h3>
+            <p>
+              Analyse every trade with comprehensive metrics such as win/loss
+              ratios, drawdowns and Sharpe ratios, presented in interactive
+              charts. Integrated risk management tools let you set fixed or
+              trailing stop‑loss orders, compute risk‑to‑reward ratios and
+              determine position size based on the 1–2% rule. These features
+              ensure you manage risk effectively and trade consistently.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo section">
+      <div class="container demo-wrapper">
+        <div class="demo-info">
+          <h2 class="section-title">Try a Quick Demo</h2>
+          <p>
+            Select a historical time frame and experiment with manual trades.
+            Adjust your position size, entry and exit points, then watch the
+            results unfold on the chart. No account required.
+          </p>
+          <form id="demoForm" class="demo-form">
+            <label>
+              Start Date
+              <input type="date" id="startDate" required />
+            </label>
+            <label>
+              End Date
+              <input type="date" id="endDate" required />
+            </label>
+            <button type="submit" class="btn secondary-btn">Load Data</button>
+          </form>
+        </div>
+        <div class="demo-chart">
+          <canvas id="demoChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bots Section -->
+    <section id="bots" class="bots section">
+      <div class="container bots-wrapper">
+        <div class="bots-info">
+          <h2 class="section-title">Build Your Own Bots</h2>
+        <p>
+            CodeBull offers a flexible scripting interface that lets you create
+            customised trading bots. Whether you prefer a simple moving
+            average crossover or a complex machine‑learning strategy, our
+            platform supports it all. Build and backtest your strategy using
+            familiar charting tools and configure webhooks to fire your
+            trading signals.
+          </p>
+          <p>
+            Write your logic using JavaScript or Python‑like syntax, test it
+            instantly in the simulator and refine it until you’re satisfied.
+            When you're ready, connect your bot and let it execute trades
+            automatically across multiple assets—your bot, your rules. Then join
+            the competition and see how it ranks on the leaderboard.
+          </p>
+        </div>
+        <div class="code-sample">
+          <pre><code class="language-javascript" id="botSample">
+// Example strategy: Moving average crossover
+const fastPeriod = 10;
+const slowPeriod = 30;
+const closePrices = [];
+
+function onNewTick(price) {
+  closePrices.push(price);
+  if (closePrices.length < slowPeriod) return;
+  const fastMA = average(closePrices.slice(-fastPeriod));
+  const slowMA = average(closePrices.slice(-slowPeriod));
+  if (!position && fastMA > slowMA) {
+    buy();
+  } else if (position && fastMA < slowMA) {
+    sell();
+  }
+}
+
+function average(arr) {
+  return arr.reduce((sum, v) => sum + v, 0) / arr.length;
+}
+          </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard section">
+      <div class="container">
+        <h2 class="section-title">Top Traders</h2>
+        <p class="section-subtitle">
+          Can you beat our best performers? Our leaderboard updates in
+          real time to showcase top traders and motivates you to refine your
+          strategies. Hone your skills and see how you rank against others.
+        </p>
+        <div class="table-responsive">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Strategy</th>
+                <th>Return (%)</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+              <!-- Rows will be injected by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container contact-wrapper">
+        <h2 class="section-title">Stay Informed</h2>
+        <p class="section-subtitle">
+          Sign up to receive updates on CodeBull’s launch, new features and
+          exclusive beta invites.
+        </p>
+        <form id="contactForm" class="contact-form">
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            required
+          />
+          <button type="submit" class="btn primary-btn">Notify Me</button>
+        </form>
+        <p id="contactMessage" class="contact-message"></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>&copy; <span id="year"></span> CodeBull. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="#" title="Discord">
+            <img src="assets/icons/discord.png" alt="Discord" />
+          </a>
+          <a href="#" title="Twitter">
+            <img src="assets/icons/twitter.png" alt="Twitter" />
+          </a>
+          <a href="#" title="GitHub">
+            <img src="assets/icons/github.png" alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Custom Script -->
+    <script src="scripts.js"></script>
+  </body>
+</html>
