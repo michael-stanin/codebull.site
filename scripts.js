@@ -196,7 +196,7 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   const messageEl = document.getElementById('contactMessage');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value.trim();
     if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -204,10 +204,31 @@ function initContactForm() {
       messageEl.style.color = '#e74c3c';
       return;
     }
-    // Clear input and show success message
-    document.getElementById('email').value = '';
-    messageEl.textContent = 'Thanks! We will keep you updated.';
-    messageEl.style.color = '#00d68f';
+    messageEl.textContent = 'Submitting...';
+    messageEl.style.color = '#888';
+    try {
+      const res = await fetch('http://localhost:3001/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Website User',
+          email,
+          message: 'Notify me about CodeBull updates.'
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        document.getElementById('email').value = '';
+        messageEl.textContent = 'Thanks! We will keep you updated.';
+        messageEl.style.color = '#00d68f';
+      } else {
+        messageEl.textContent = data.error || 'Submission failed.';
+        messageEl.style.color = '#e74c3c';
+      }
+    } catch (err) {
+      messageEl.textContent = 'Could not connect to server: ' + err.message;
+      messageEl.style.color = '#e74c3c';
+    }
   });
 }
 
