@@ -1,6 +1,11 @@
 // scripts.js – adds interactivity to the CodeBull teaser site
 
-// Helper function to generate a random walk dataset
+/**
+ * Generates a random walk (price‑like) time series.
+ * @param {number} length Number of points
+ * @param {number} start Starting value
+ * @returns {number[]} Simulated price sequence
+ */
 function generateRandomWalk(length, start = 100) {
   const data = [];
   let value = start;
@@ -12,7 +17,10 @@ function generateRandomWalk(length, start = 100) {
   return data;
 }
 
-// Initialize hero chart
+/**
+ * Initializes the animated hero chart (lightweight sparkline style).
+ * Hides axes & legend for visual emphasis.
+ */
 function initHeroChart() {
   const canvas = document.getElementById('heroChart');
   if (!canvas) return;
@@ -57,7 +65,10 @@ function initHeroChart() {
       },
     },
   });
-  // function to update hero chart
+  /**
+   * Shifts oldest point, appends a new simulated value.
+   * Keeps data length constant for smooth scrolling effect.
+   */
   function updateChart() {
     const oldData = heroChart.data.datasets[0].data;
     // remove the first element
@@ -76,7 +87,10 @@ function initHeroChart() {
   setInterval(updateChart, 1000);
 }
 
-// Initialize demo chart
+/**
+ * Binds the historical demo form, generates a capped random walk dataset
+ * over the selected date range, and renders a Chart.js line chart.
+ */
 function initDemo() {
   const form = document.getElementById('demoForm');
   const demoCanvas = document.getElementById('demoChart');
@@ -154,7 +168,10 @@ function initDemo() {
   });
 }
 
-// Populate leaderboard with sample data
+/**
+ * Inserts static sample leaderboard rows.
+ * Could later be replaced by live API feed.
+ */
 function initLeaderboard() {
   const body = document.getElementById('leaderboardBody');
   if (!body) return;
@@ -172,7 +189,9 @@ function initLeaderboard() {
   body.innerHTML = rows;
 }
 
-// Contact form submission
+/**
+ * Validates a basic email pattern and displays inline feedback.
+ */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const messageEl = document.getElementById('contactMessage');
@@ -192,7 +211,9 @@ function initContactForm() {
   });
 }
 
-// Set footer year
+/**
+ * Sets current year in footer.
+ */
 function setYear() {
   const yearEl = document.getElementById('year');
   if (yearEl) {
@@ -200,7 +221,9 @@ function setYear() {
   }
 }
 
-// Initialize Prism for code highlighting
+/**
+ * Triggers Prism syntax highlighting if loaded.
+ */
 function initCodeHighlighting() {
   if (window.Prism) {
     Prism.highlightAll();

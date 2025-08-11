@@ -1,3 +1,14 @@
+/**
+ * generate_icons.js
+ *
+ * Utility script to (re)generate monochrome PNG icon assets from Font Awesome
+ * definitions so the static site does not depend on the FA runtime in the
+ * browser. Run manually whenever you add / change icons:
+ *
+ *   node generate_icons.js
+ *
+ * Output: ./assets/icons/*.png
+ */
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
@@ -13,7 +24,10 @@ const {
 } = require('@fortawesome/free-solid-svg-icons');
 const { faDiscord, faGithub, faTwitter } = require('@fortawesome/free-brands-svg-icons');
 
-// Map icon names to their definitions and file names
+/**
+ * Map of logical icon keys to Font Awesome definitions and output file names.
+ * Extend this object to add new exported PNG icons.
+ */
 const icons = {
   realTime: { definition: faChartLine, file: 'real_time.png' },
   botBuilder: { definition: faLaptopCode, file: 'bot_builder.png' },
@@ -27,6 +41,12 @@ const icons = {
   twitter: { definition: faTwitter, file: 'twitter.png' },
 };
 
+/**
+ * Generates all PNG icons (idempotent).
+ * 1. Renders the FA SVG in memory
+ * 2. Converts SVG -> PNG via sharp
+ * 3. Writes to /assets/icons
+ */
 async function generate() {
   const outDir = path.join(__dirname, 'assets', 'icons');
   fs.mkdirSync(outDir, { recursive: true });
