@@ -229,24 +229,19 @@ def on_new_tick(price):
     global position
     close_prices.append(price)
     if len(close_prices) < slow_period:
-  return
+      return
     fast_ma = average(close_prices[-fast_period:])
     slow_ma = average(close_prices[-slow_period:])
     if not position and fast_ma > slow_ma:
-  buy()
-  position = True
+      buy()
+      position = True
     elif position and fast_ma < slow_ma:
-  sell()
-  position = False
+      sell()
+      position = False
 
 def average(arr):
     return sum(arr) / len(arr)
 
-def buy():
-    print("Buy signal")
-
-def sell():
-    print("Sell signal")
           </code></pre>
         </div>
       </div>
