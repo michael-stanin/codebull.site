@@ -218,27 +218,35 @@
           </p>
         </div>
         <div class="code-sample">
-          <pre><code class="language-javascript" id="botSample">
-// Example strategy: Moving average crossover
-const fastPeriod = 10;
-const slowPeriod = 30;
-const closePrices = [];
+          <pre><code class="language-python" id="botSample">
+# Example strategy: Moving average crossover
+fast_period = 10
+slow_period = 30
+close_prices = []
+position = False
 
-function onNewTick(price) {
-  closePrices.push(price);
-  if (closePrices.length < slowPeriod) return;
-  const fastMA = average(closePrices.slice(-fastPeriod));
-  const slowMA = average(closePrices.slice(-slowPeriod));
-  if (!position && fastMA > slowMA) {
-    buy();
-  } else if (position && fastMA < slowMA) {
-    sell();
-  }
-}
+def on_new_tick(price):
+    global position
+    close_prices.append(price)
+    if len(close_prices) < slow_period:
+  return
+    fast_ma = average(close_prices[-fast_period:])
+    slow_ma = average(close_prices[-slow_period:])
+    if not position and fast_ma > slow_ma:
+  buy()
+  position = True
+    elif position and fast_ma < slow_ma:
+  sell()
+  position = False
 
-function average(arr) {
-  return arr.reduce((sum, v) => sum + v, 0) / arr.length;
-}
+def average(arr):
+    return sum(arr) / len(arr)
+
+def buy():
+    print("Buy signal")
+
+def sell():
+    print("Sell signal")
           </code></pre>
         </div>
       </div>
@@ -351,7 +359,7 @@ function average(arr) {
 
     <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <!-- Custom Script -->
     <script src="scripts.js"></script>
