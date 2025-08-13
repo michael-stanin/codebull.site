@@ -7,24 +7,9 @@ Static marketing / teaser landing page for the upcoming CodeBull trading & bot p
 
 Contact form submissions are now sent to a Node.js/Express backend and saved in `submissions.json`.
 
-### How to Start the Backend Server
-
-1. Make sure you have Node.js installed.
-2. Install dependencies (Express):
-	```powershell
-	npm install express
-	```
-3. Start the server:
-	```powershell
-	node server.js
-	```
-	The server will run on port 3001 by default.
-
 ### How It Works
 
-- The contact form on the site sends submissions to `http://localhost:3001/contact`.
-- Submissions are saved in `submissions.json` in the project root.
-- You can view or process submissions from this file.
+- The contact form sends submissions to `https://codebull-site-backend-c7a608525c7c.herokuapp.com/contact`.
 
 ## Roadmap Ideas
 

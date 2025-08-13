@@ -1,5 +1,15 @@
 // scripts.js – adds interactivity to the CodeBull teaser site
 
+// Backend API base URL resolution
+// - In development (localhost), defaults to http://localhost:3001
+// - In production (e.g., GitHub Pages), set window.CONTACT_API_URL in index.html
+const CONTACT_API_URL = (function () {
+  const isLocalhost = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  if (isLocalhost) return 'http://localhost:3001';
+  if (window.CONTACT_API_URL) return window.CONTACT_API_URL.replace(/\/$/, '');
+  return null; // not configured for production
+})();
+
 /**
  * Generates a random walk (price‑like) time series.
  * @param {number} length Number of points
@@ -204,10 +214,15 @@ function initContactForm() {
       messageEl.style.color = '#e74c3c';
       return;
     }
+    if (!CONTACT_API_URL) {
+      messageEl.textContent = 'Backend not configured. Please set window.CONTACT_API_URL.';
+      messageEl.style.color = '#e74c3c';
+      return;
+    }
     messageEl.textContent = 'Submitting...';
     messageEl.style.color = '#888';
     try {
-      const res = await fetch('http://localhost:3001/contact', {
+      const res = await fetch(`${CONTACT_API_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
