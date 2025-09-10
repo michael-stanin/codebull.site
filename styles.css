@@ -135,7 +135,8 @@ a {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding-top: 80px; /* account for navbar */
+  margin-top: 80px; /* account for navbar */
+  padding-top: 0; /* remove redundant padding */
   background: linear-gradient(135deg, #0a1e2e 0%, #062140 100%);
   position: relative;
   overflow: hidden;
